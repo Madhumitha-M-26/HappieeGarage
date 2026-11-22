@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Garage - Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <h1>Happy <span>Garage</span> &nbsp;|&nbsp; Admin</h1>
+    <div>
+      <a href="reports.html" style="color:#ffc700">Reports</a> &nbsp;
+      <button id="btnLogout" class="small">Logout</button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <div class="card">
+      <h2>Customer Credit Limits</h2>
+      <table id="custTable"></table>
+    </div>
+
+    <div class="card">
+      <h2>Categories</h2>
+      <div class="row">
+        <input type="text" id="catName" placeholder="Category name (e.g. Supercars)">
+        <button id="btnAddCat">Add Category</button>
+      </div>
+      <table id="catTable"></table>
+    </div>
+
+    <div class="card">
+      <h2>Cars (Inventory)</h2>
+      <div class="row">
+        <input type="hidden" id="prodDocId">
+        <select id="prodCat"></select>
+        <input type="text" id="prodTitle" placeholder="Car name">
+        <input type="text" id="prodDes" placeholder="Description">
+        <select id="prodRarity">
+          <option value="Common">Common</option>
+          <option value="Rare">Rare</option>
+          <option value="SuperRare">Super Rare</option>
+          <option value="TreasureHunt">Treasure Hunt</option>
+        </select>
+        <input type="number" id="prodQty" placeholder="Qty">
+        <input type="number" id="prodPrice" placeholder="Price">
+        <input type="text" id="prodImg" placeholder="Image link (https://...)">
+        <button id="btnSaveProd">Add Car</button>
+        <button id="btnCancelEdit" class="gray" style="display:none">Cancel</button>
+      </div>
+
+      <div class="row">
+        <select id="filterCat"><option value="">All categories</option></select>
+        <input type="text" id="searchId" placeholder="Find by item Id">
+        <button id="btnFind">Find</button>
+        <button id="btnReset" class="gray">Show all</button>
+      </div>
+
+      <table id="prodTable"></table>
+      <div class="pager">
+        <button id="btnPrev" class="small gray">Prev</button>
+        <span id="pageInfo"></span>
+        <button id="btnNext" class="small gray">Next</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

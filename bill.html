@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Happy Garage - Bill</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+  <div class="topbar"><h1>Happy <span>Garage</span></h1><div><a href="shop.html">Shop</a><a href="orders.html">My Orders</a></div></div>
+  <div class="bill-wrap"><div class="bill-card"><div class="bill-head"><div><h2>Pit Stop <span>Receipt</span></h2><p style="color:#cbd8ec;margin:5px 0 0">Official Happy Garage purchase receipt</p></div><div style="font-weight:800;color:#ffd21a">RACE DAY</div></div><div class="bill-body" id="bill">Loading...</div></div></div>
+  <div class="print-row"><button onclick="window.print()">Print Bill</button></div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script>
+    const id = new URLSearchParams(location.search).get("id");
+    auth.onAuthStateChanged(u => {
+      if (!u) return (location.href = "index.html");
+      db.collection("orders").doc(id).get().then(d => {
+        if (!d.exists) return $("#bill").text("Order not found");
+        const o = d.data();
+        if (o.customerId !== u.uid) return $("#bill").text("This is not your order");
+        const date = o.createdAt ? o.createdAt.toDate().toLocaleString() : "";
+        let rows = "";
+        o.items.forEach(i => rows += `<tr><td>${i.title}</td><td>${i.qty}</td><td>₹${i.price}</td><td>₹${i.price * i.qty}</td></tr>`);
+        $("#bill").html(`<p><b>Order:</b> ${d.id}<br><b>Date:</b> ${date}<br><b>Customer:</b> ${o.customerName} (${o.email})<br><b>Payment:</b> <span class="badge Common">${o.paymentMode.toUpperCase()}</span></p><table><tr><th>Car</th><th>Qty</th><th>Price</th><th>Amount</th></tr>${rows}</table><div class="bill-total">Total: ₹${o.total}</div><p style="text-align:center;color:var(--muted);margin-top:28px">Thank you for shopping at Happy Garage. Keep collecting. Keep racing.</p>`);
+      }).catch(e => $("#bill").text("Error: " + e.message));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101c3a"/><stop offset="1" stop-color="#081126"/></linearGradient></defs>
+<rect width="800" height="480" rx="32" fill="url(#g)"/>
+<path d="M80 330h640" stroke="#ff8a00" stroke-width="12" stroke-linecap="round" opacity=".8"/>
+<path d="M140 280l72-70h250l95 70 42 18v46H120v-46z" fill="#e9eef7"/>
+<path d="M245 215h205l55 63H190z" fill="#5cc8ff" opacity=".9"/>
+<circle cx="235" cy="346" r="42" fill="#0b0f18"/><circle cx="235" cy="346" r="19" fill="#ffcc00"/>
+<circle cx="555" cy="346" r="42" fill="#0b0f18"/><circle cx="555" cy="346" r="19" fill="#ffcc00"/>
+<rect x="142" y="290" width="35" height="18" rx="8" fill="#ff3b30"/><rect x="623" y="290" width="35" height="18" rx="8" fill="#ff3b30"/>
+<text x="400" y="105" fill="#fff" font-family="Arial" font-size="44" font-weight="900" text-anchor="middle">HAPPY GARAGE</text>
+<text x="400" y="150" fill="#ffcc00" font-family="Arial" font-size="22" font-weight="700" text-anchor="middle">READY TO RACE</text>
+</svg>

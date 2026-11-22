@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Garage - Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <h1>Happy <span>Garage</span></h1>
+    <div>
+      <a href="orders.html">My Orders</a>
+      <span id="who"></span>
+      <button id="btnLogout" class="small">Logout</button>
+    </div>
+  </div>
+
+  <section class="shop-hero">
+    <div class="hero-kicker">Hot Wheels Collectors' Pit Stop</div>
+    <h2>Build your <span>dream garage.</span></h2>
+    <p>Find your next die-cast legend, add it to the garage and get ready to race. New wheels, rare finds and track-ready classics are waiting.</p>
+    <div class="hero-actions">
+      <a href="#shop">Start collecting</a>
+      <a class="secondary" href="orders.html">View my orders</a>
+    </div>
+  </section>
+
+  <section class="category-showcase">
+    <div class="section-title">
+      <div><h2>Pick your lane</h2><p>Explore the garage collection</p></div>
+    </div>
+    <div class="category-rail">
+      <div class="category-tile"><img src="assets/category-street.svg"><strong>Street Racers</strong></div>
+      <div class="category-tile"><img src="assets/category-supercars.svg"><strong>Super Cars</strong></div>
+      <div class="category-tile"><img src="assets/category-classics.svg"><strong>Classics</strong></div>
+      <div class="category-tile"><img src="assets/category-monsters.svg"><strong>Track Monsters</strong></div>
+      <div class="category-tile"><img src="assets/category-treasure.svg"><strong>Treasure Hunts</strong></div>
+      <div class="category-tile"><img src="assets/category-track.svg"><strong>Race Day</strong></div>
+    </div>
+  </section>
+
+  <div id="shop" class="shop-layout">
+    <div>
+      <div class="shop-toolbar">
+        <input type="text" id="search" placeholder="Search your next Hot Wheels...">
+        <select id="filterCat"><option value="">All categories</option></select>
+      </div>
+      <div id="grid" class="grid"></div>
+      <div class="pager">
+        <button id="btnPrev" class="small gray">Prev</button>
+        <span id="pageInfo"></span>
+        <button id="btnNext" class="small gray">Next</button>
+      </div>
+    </div>
+
+    <div class="card cart">
+      <h2>My Cart</h2>
+      <div id="cartItems"></div>
+      <h3>Total: ₹<span id="cartTotal">0</span></h3>
+      <select id="payMode">
+        <option value="cash">Pay by Cash</option>
+        <option value="credit">Pay by Credit</option>
+      </select>
+      <p id="creditInfo" style="font-size:13px"></p>
+      <button id="btnCheckout">Place Order</button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>
